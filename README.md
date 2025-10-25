@@ -61,14 +61,6 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="40" alt="python logo"  />
 </div>
 
-###
-
-<div aligh="center">
-  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmN2ajRtcmtjcnZ2ejl2MjVjcmd5Mnltc28xNjJ1Z2F4c2l1em1sMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EZr27ZbJwmjE9PGyLN/giphy.gif" width="37" height="25" alt="Pacman contribution graph" />
-</div>
-
-
-###
 
 <div align="center">
   <img src="https://visitor-badge.laobi.icu/badge?page_id=pooyasamimi.pooyasamimi&"  />
@@ -76,8 +68,6 @@
 
 ###
 
-<div>
-  <img style="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&section=header&reversal=false&fontSize=70&fontColor=FFFFFF&fontAlign=50&fontAlignY=50&stroke=-&descSize=20&descAlign=50&descAlignY=50&theme=cobalt"  />
-</div>
+<img src="https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/snake.svg" alt="Snake animation" />
 
 ###
