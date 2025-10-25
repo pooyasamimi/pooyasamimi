@@ -1,35 +1,45 @@
-name: Generate Pacman contribution graph
+name: Generate Pacman Contribution Graph
 
 on:
   schedule:
-    - cron: "0 0 * * *" # هر روز
-  workflow_dispatch:
+    - cron: "0 0 * * *"  # اجرا هر روز ساعت 00:00 UTC
+  workflow_dispatch:      # اجرای دستی از تب Actions
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Generate Pacman contribution graph
-        uses: Platane/pacman-canvas@v1
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          github_user_name: pooyasamimi
-          outputs: |
-            dist/pacman-contribution-graph.svg
-            dist/pacman-contribution-graph-dark.svg?palette=github-dark
+          python-version: "3.x"
 
-      - name: Push to output branch
+      - name: Install dependencies
         run: |
-          git config user.name "GitHub Action"
-          git config user.email "actions@github.com"
-          git fetch origin
-          git checkout -B output
-          mkdir -p dist
-          cp dist/pacman-contribution-graph*.svg .
-          git add pacman-contribution-graph*.svg
-          git commit -m "update pacman graphs" || echo "no changes"
-          git push origin output --force
+          pip install requests Pillow
+
+      - name: Generate Pacman contribution graph (Light)
+        run: |
+          git clone https://github.com/yoshi389111/github-profile-pacman.git
+          cd github-profile-pacman
+          python pacman.py --user pooyasamimi --theme light --output ../output/pacman-contribution-graph.svg
+
+      - name: Generate Pacman contribution graph (Dark)
+        run: |
+          cd github-profile-pacman
+          python pacman.py --user pooyasamimi --theme dark --output ../output/pacman-contribution-graph-dark.svg
+
+      - name: Commit and push generated files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/*.svg
+          git commit -m "update pacman contribution graph" || echo "No changes to commit"
+          git push origin main
