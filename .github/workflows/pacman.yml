@@ -1,0 +1,36 @@
+name: Generate Pacman Graph
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate Pacman Contribution Graph
+        uses: Platane/Platane/snk@v3
+        with:
+          github_user_name: pooyasamimi
+          # دو خروجی متفاوت برای تم روشن و تاریک
+          outputs: |
+            dist/pacman-contribution-graph.svg
+            dist/pacman-contribution-graph-dark.svg?palette=github-dark
+
+      - name: Push files to output branch
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git fetch origin
+          git checkout -B output
+          mkdir -p dist
+          cp dist/pacman-contribution-graph*.svg .
+          git add pacman-contribution-graph*.svg
+          git commit -m "update pacman graphs" || echo "no changes"
+          git push origin output --force
