@@ -2,7 +2,7 @@ name: Generate Pacman Contribution Graph
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # هر روز نیمه‌شب UTC
+    - cron: "0 0 * * *"  # اجرا هر روز ساعت 00:00 UTC
   workflow_dispatch:
   push:
     branches:
@@ -13,8 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout your repository
         uses: actions/checkout@v4
+
+      - name: Checkout pacman generator
+        uses: actions/checkout@v4
+        with:
+          repository: yoshi389111/github-profile-pacman
+          path: github-profile-pacman
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -25,15 +31,9 @@ jobs:
         run: |
           pip install requests Pillow
 
-      - name: Clone pacman generator (authenticated)
-        run: |
-          git clone https://github.com/yoshi389111/github-profile-pacman.git
-        env:
-          GIT_ASKPASS: /bin/echo
-          GIT_TERMINAL_PROMPT: 0
-
       - name: Generate Pacman contribution graph (Light)
         run: |
+          mkdir -p output
           cd github-profile-pacman
           python pacman.py --user pooyasamimi --theme light --output ../output/pacman-contribution-graph.svg
 
