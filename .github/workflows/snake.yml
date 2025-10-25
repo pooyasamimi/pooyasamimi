@@ -9,17 +9,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4  # ✅ این خط اضافه شده
+      # ✅ مرحله‌ی ۱: کل ریپو رو با تاریخچه کامل چک‌اوت کن
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # بدون این، .git ساخته نمیشه!
 
-      - uses: Platane/snk@v3
+      # ✅ مرحله‌ی ۲: اجرای ابزار Snake
+      - name: Generate Snake SVG
+        uses: Platane/snk@v3
         with:
           github_user_name: pooyasamimi
           outputs: dist/snake.svg
 
-      - name: Commit and push snake.svg
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: GitHub Action
-          author_email: actions@github.com
-          message: "Generate snake.svg"
-          add: "dist/snake.svg"
+      # ✅ مرحله‌ی ۳: ساخت شاخه‌ی خروجی و push فایل نهایی
+      - name: Push Snake SVG to output branch
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git fetch origin
+          git checkout -B output
+          mkdir -p dist
+          cp dist/snake.svg .
+          git add snake.svg
+          git commit -m "Update snake.svg" || echo "No changes to commit"
+          git push origin output --force
