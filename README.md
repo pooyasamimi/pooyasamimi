@@ -63,8 +63,7 @@
 
 ###
 
-![Pacman contribution graph light](https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/pacman-contribution-graph.svg#gh-light-mode-only)
-![Pacman contribution graph dark](https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/pacman-contribution-graph-dark.svg#gh-dark-mode-only)
+<img src="https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/pacman-contribution-graph.svg" alt="Pacman contribution graph" />
 
 
 ###
