@@ -1,7 +1,7 @@
 name: Generate Snake
 
 on:
-  schedule: # هر روز خودکار اجرا بشه
+  schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
@@ -9,12 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4  # ✅ این خط اضافه شده
+
       - uses: Platane/snk@v3
         with:
           github_user_name: pooyasamimi
           outputs: dist/snake.svg
 
-      - name: Upload to GitHub
+      - name: Commit and push snake.svg
         uses: EndBug/add-and-commit@v9
         with:
           author_name: GitHub Action
