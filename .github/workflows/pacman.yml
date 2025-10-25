@@ -2,8 +2,8 @@ name: Generate Pacman Contribution Graph
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # اجرا هر روز ساعت 00:00 UTC
-  workflow_dispatch:      # اجرای دستی از تب Actions
+    - cron: "0 0 * * *"  # هر روز نیمه‌شب UTC
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -25,9 +25,15 @@ jobs:
         run: |
           pip install requests Pillow
 
-      - name: Generate Pacman contribution graph (Light)
+      - name: Clone pacman generator (authenticated)
         run: |
           git clone https://github.com/yoshi389111/github-profile-pacman.git
+        env:
+          GIT_ASKPASS: /bin/echo
+          GIT_TERMINAL_PROMPT: 0
+
+      - name: Generate Pacman contribution graph (Light)
+        run: |
           cd github-profile-pacman
           python pacman.py --user pooyasamimi --theme light --output ../output/pacman-contribution-graph.svg
 
