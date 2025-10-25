@@ -1,29 +1,28 @@
-name: Generate Pacman Graph
+name: Generate Pacman contribution graph
 
 on:
   schedule:
-    - cron: "0 0 * * *" # اجرای خودکار هر روز
+    - cron: "0 0 * * *" # هر روز
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Generate Pacman graph
-        uses: Platane/snk@v3
+      - name: Generate Pacman contribution graph
+        uses: Platane/pacman-canvas@v1
         with:
           github_user_name: pooyasamimi
           outputs: |
             dist/pacman-contribution-graph.svg
             dist/pacman-contribution-graph-dark.svg?palette=github-dark
 
-      - name: Push generated files to output branch
+      - name: Push to output branch
         run: |
           git config user.name "GitHub Action"
           git config user.email "actions@github.com"
