@@ -63,7 +63,9 @@
 
 ###
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmN2ajRtcmtjcnZ2ejl2MjVjcmd5Mnltc28xNjJ1Z2F4c2l1em1sMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EZr27ZbJwmjE9PGyLN/giphy.gif" alt="Pacman contribution graph" />
+<div aligh="center">
+  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmN2ajRtcmtjcnZ2ejl2MjVjcmd5Mnltc28xNjJ1Z2F4c2l1em1sMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EZr27ZbJwmjE9PGyLN/giphy.gif" width="37" height="25" alt="Pacman contribution graph" />
+</div>
 
 
 ###
