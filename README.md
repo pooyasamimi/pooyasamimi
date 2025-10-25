@@ -63,11 +63,9 @@
 
 ###
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/pacman-contribution-graph-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/pacman-contribution-graph.svg">
-  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/pacman-contribution-graph.svg">
-</picture>
+![Pacman contribution graph light](https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/pacman-contribution-graph.svg#gh-light-mode-only)
+![Pacman contribution graph dark](https://raw.githubusercontent.com/pooyasamimi/pooyasamimi/output/pacman-contribution-graph-dark.svg#gh-dark-mode-only)
+
 
 ###
 
